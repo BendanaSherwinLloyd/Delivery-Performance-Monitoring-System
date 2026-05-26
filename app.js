@@ -1,6 +1,5 @@
 import express from "express";
-import 'dotenv/config.js';
-import authRoutes from "./routes/authRoute.js";                                                                                
+import performanceRoutes from "./routes/performanceRoutes.js";                                                                     
 
 const app = express();
 
@@ -13,12 +12,14 @@ app.use((req, res, next) => {
 })
 
 try {
-    app.listen(process.env.PORT || 3000, () => {     
-        console.log(`Listening to port ${process.env.PORT || 3000}...`);
+    app.listen(process.env.PORT || 8000, () => {     
+        console.log(`Listening to port ${process.env.PORT || 8000}...`);
     });
 } catch (e) {
     console.log(e);
 }
+
+app.use('/performance', performanceRoutes);
 
 export default performanceRoutes;
 
